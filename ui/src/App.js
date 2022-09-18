@@ -34,6 +34,10 @@ function App() {
         </a> */}
       </header>
       <div className="content">
+        <div>
+
+        </div>
+        <div className="schedule">123</div>
       </div>
       <footer>
       Matikan handphone atau ubah ke mode hening ketika berada di dalam masjid

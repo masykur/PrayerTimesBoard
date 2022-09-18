@@ -95,6 +95,15 @@ header .calendar {
 }
 .App .content {
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.App .content .schedule {
+  width: 10rem;
+  background-color: navy;
+  color:  #ffffff;
+  margin-top: -1.5rem;
 }
 footer {
   padding: 0.5rem;
