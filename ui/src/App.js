@@ -1,5 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import Schedule from './Schedule';
+import Calendar from './Calendar';
+import { Coordinates, CalculationMethod, PrayerTimes } from 'adhan';
+import { format, add, formatDistanceToNow } from 'date-fns'
+import { id } from 'date-fns/locale'
 //import car from '..//images/car.jpg'; // gives image path
 
 function App() {
@@ -17,9 +22,7 @@ function App() {
             <p>Jl. Bulevar Utara Blok L Summarecon Bekasi, Kota Bekasi 17142</p>
           </div>
         </div>
-        <div className="calendar">
-
-        </div>
+        <Calendar className="calendar"></Calendar>
         {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -37,7 +40,8 @@ function App() {
         <div>
 
         </div>
-        <div className="schedule">123</div>
+        <Schedule className="schedule" prayerTimes={prayerTimes}>
+        </Schedule>
       </div>
       <footer>
       Matikan handphone atau ubah ke mode hening ketika berada di dalam masjid
@@ -45,5 +49,14 @@ function App() {
     </div>
   );
 }
-
+const schedule = {
+    date: new Date(),
+    params: CalculationMethod.MoonsightingCommittee(),
+    coordinates: new Coordinates(-6.211498, 107.021309),
+    now: new Date(),
+    nextPrayer: null,
+    nextPrayerTime: new Date()
+};
+const prayerTimes = new PrayerTimes(schedule.coordinates, schedule.date, schedule.params);
+console.info(prayerTimes);
 export default App;
