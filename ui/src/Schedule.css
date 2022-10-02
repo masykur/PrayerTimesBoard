@@ -24,4 +24,6 @@
     line-height: 3rem;
     font-size: 3rem;
   }
-  
+  .schedule div.active {
+    color: #008000;
+  }

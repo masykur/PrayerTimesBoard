@@ -43,8 +43,8 @@ function App() {
         <Schedule className="schedule" prayerTimes={prayerTimes}>
         </Schedule>
       </div>
-      <footer>
-      Matikan handphone atau ubah ke mode hening ketika berada di dalam masjid
+      <footer className='marquee'>
+        <p>Matikan handphone atau ubah ke mode hening ketika berada di dalam masjid</p>
       </footer>
     </div>
   );
