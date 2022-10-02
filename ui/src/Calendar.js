@@ -48,7 +48,8 @@ class Calendar extends React.Component {
         var distance = (date - baseDate);
         var hours = Math.floor(distance / 1000 / 60 / 60);
         var minutes = Math.abs(Math.floor(distance / 1000 / 60 % 60));
-        return ("" + hours).padStart(2, "0") + ":" + ("" + minutes).padStart(2, "0");
+        var seconds = Math.abs(Math.floor(distance / 1000 % 60));
+        return ("" + hours).padStart(2, "0") + ":" + ("" + minutes).padStart(2, "0")+ ":" + ("" + seconds).padStart(2, "0");
     }
     localizePrayerName(date, name) {
       if (date.getDay()===5) {
@@ -90,9 +91,6 @@ class Calendar extends React.Component {
       var windu = year % 8;
       var deltaDay = Math.floor(days - (year * 354.375));
       var firstSuroDay = Math.floor(date.getTime() / 86400000) + (-1 * deltaDay);
-      // var firstSuroDate = new Date(firstSuroDay * 86400000);
-      // var firstSuroDayOfWeek = (firstSuroDay + 5) % 7;
-      // var firstSuroJavaDayOfWeek = (firstSuroDay + 5) % 5;
       var dayOfFirstSuro = firstSuro[windu];
       var firstSuroDayAdjustment = firstSuroDay;
       var i=0;
@@ -137,7 +135,7 @@ class Calendar extends React.Component {
             <div>{this.state.javaDate.day} {this.state.javaDate.monthName} {this.state.javaDate.year}</div>
           </div>
           <div className="clock">
-              <h2>{format(this.state.now, "HH:mm")}</h2>
+              <h2>{format(this.state.now, "HH:mm:ss")}</h2>
               <div>⏰ {this.localizePrayerName(this.state.now, this.state.nextPrayer)} { this.formatDistance(this.state.now, this.state.nextPrayerTime, { locale: id, addSuffix: true }) }</div>
           </div>
         </div>
